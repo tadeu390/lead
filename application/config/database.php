@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=localhost;port=3306;dbname=coden',
+	'dsn'	=> 'mysql:host=localhost;port=3306;dbname=lead',
 	'hostname' => 'mysql:host=localhost',
-	'username' => 'coden',
-	'password' => 'coden',
-	'database' => 'coden',
+	'username' => 'lead',
+	'password' => 'lead',
+	'database' => 'lead',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
