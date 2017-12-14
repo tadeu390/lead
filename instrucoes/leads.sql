@@ -2,21 +2,23 @@ DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS leads;
 
 CREATE TABLE usuario(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100),
-	email VARCHAR(50),
-	senha VARCHAR(200)
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	senha VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE leads(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100),
-	email VARCHAR(50),
-	cpf INT,
-	cep INT,
-	telefone INT,
-	investimento VARCHAR(100),
-	segmento VARCHAR(100),
+	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	ativo BOOLEAN,
+	nome VARCHAR(100) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	cpf VARCHAR(14) NOT NULL,
+	cep VARCHAR(10) NOT NULL,
+	telefone VARCHAR(15) NOT NULL,
 	observacoes TEXT
 );
+
+--INSERIR UM USUÁRIO PADRÃO
+INSERT INTO usuario('nome','email','senha') VALUES('teste','teste@teste.com','teste');
 

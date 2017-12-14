@@ -1,7 +1,9 @@
 $(document).ready(
 	//inicializa o html adicionando os envetos js especificados abaixo
 	function () {
-	    
+
+		Main.load_mask();
+		
 		//event for form login
 	    $('#bt_login').click(function() { 
 			Main.login();
@@ -22,30 +24,20 @@ $(document).ready(
 		
 		//event for form register
 		
-		$('#bt_cadastro').click(function() { 
-			Main.cadastro();
-		});
-		
-		$('#nome').blur(function() { 
-			if(this.value != '') Main.show_error("nome","error-nome","","form-control is-valid");
-		});
-		
-		$('#email').blur(function() { 
-			if(this.value != '') Main.valida_email(this.value);
-		});
-		
-		$('#cpf').blur(function() { 
-			if(this.value != '') Main.show_error("cpf","error-cpf","","form-control is-valid");
-		});
-		
-		$('#cep').blur(function() { 
-			if(this.value != '') Main.show_error("cep","error-cep","","form-control is-valid");
-		});
-		
-		$('#telefone').blur(function() { 
-			if(this.value != '') Main.show_error("telefone","error-telefone","","form-control is-valid");
-		});
+		Main.event_cadastro('new');
 		
 		//event for form register
+		
+		//event for admin
+		
+		$('#bt_leads').click(function() {
+			Main.lista_leads();
+		});
+		
+		$('#bt_estatistica').click(function() { 
+			//Main.lista_leads();
+		});
+		
+		//event for 
 	}
  );

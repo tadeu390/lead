@@ -20,7 +20,7 @@
 		
 		public function set_lead($data)
 		{
-			$this->load->helper('url');
+			//$this->load->helper('url');
 			if(empty($data['id']))
 				return $this->db->insert('leads', $data);
 			else
@@ -28,6 +28,11 @@
 				$this->db->where('id', $data['id']);
 				return $this->db->update('leads', $data);
 			}
+		}
+		
+		public function delete_lead($id){
+			$this->db->where('id',$id);
+			return $this->db->delete("leads");
 		}
 	}
 ?>

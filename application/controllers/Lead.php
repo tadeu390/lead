@@ -23,6 +23,7 @@
 		{
 			$dataToSave = array(
 				'id' => $this->input->post('lead'),
+				'ativo' => 1,
 				'nome' => $this->input->post('nome'),
 				'email' => $this->input->post('email'),
 				'cpf' => $this->input->post('cpf'),
@@ -33,8 +34,8 @@
 			$this->lead_model->set_lead($dataToSave);
 			
 			$arr = array('response' => 'sucesso');
-				header('Content-Type: application/json');
-				echo json_encode($arr);
+			header('Content-Type: application/json');
+			echo json_encode($arr);
 		}
 		
 		/*
@@ -42,11 +43,12 @@
 		*/
 		public function create()
 		{
+			$data['url'] = base_url();
 			$data['title'] = 'Lead - Cadastro';
 			$data['message'] = 'Informe seus dados no formulario abaixo';
 			$this->load->view('templates/header',$data);
 			$this->load->view('lead/create',$data);
-			$this->load->view('templates/footer');
+			$this->load->view('templates/footer',$data);
 		}
 		
 		/*
@@ -55,27 +57,21 @@
 		*/
 		public function edit($id = null)
 		{
-			$data['title'] = 'Lead - Cadastro';
-			$data['message'] = 'Informe seus dados no formulario abaixo';
 			$dataToForm = $this->lead_model->get_lead($id);
-			if (isset($dataToForm))
-			{
-				$data['id'] = $dataToForm['id'];
-				$data['nome'] = $dataToForm['nome'];
-				$data['email'] = $dataToForm['email'];
-				$data['cpf'] = $dataToForm['cpf'];
-				$data['cep'] = $dataToForm['cep'];
-				$data['telefone'] = $dataToForm['telefone'];
-				$data['observacoes'] = $dataToForm['observacoes'];
-				$this->load->view('templates/header',$data);
-				$this->load->view('lead/create',$data);
-				$this->load->view('templates/footer');
-			}
-			else
-			{
-				$data['mensagem'] = "Registro não encontrado." ;
-				$this->load->view('errors/html/erro', $data);
-			}
+			header('Content-Type: application/json');
+			echo json_encode($dataToForm);
+		}
+		
+		public function index()
+		{
+			$arr = $this->lead_model->get_lead();
+			header('Content-Type: application/json');
+			echo json_encode($arr);
+		}
+		
+		public function delete($id = null)
+		{
+			$this->lead_model->delete_lead($id);
 		}
 	}
 ?>

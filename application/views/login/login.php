@@ -1,6 +1,11 @@
 <?php
-	if(isset($_SESSION['id']))
-		header("location:http://localhost/git/lead/index.php/admin/dashboard");
+session_start();
+	echo $_SESSION['id_user'];
+	echo "<br />";
+	echo $_SESSION['nome'];
+
+	//if(isset($_SESSION['id_user']))
+		//header("location:$url"."index.php/admin/dashboard");
 	
 	$atr = array('id' => 'form_login','name' => 'form_login');
 	echo form_open('login/validar',$atr);

@@ -20,12 +20,13 @@
 			metodo responsavel carregar o formulario de login
 		*/
 		public function login()
-		{
+		{	
+			$data['url'] = base_url();
 			$data['title'] = 'Login';
 			$data['message'] = 'Administração';
 			$this->load->view('templates/header',$data);
 			$this->load->view('login/login',$data);
-			$this->load->view('templates/footer');
+			$this->load->view('templates/footer',$data);
 		}
 		
 		public function logout()
@@ -34,7 +35,7 @@
 		}
 		
 		public function validar()
-		{
+		{ 
 			$email = $this->input->post('email');
 			$senha = $this->input->post('senha');
 			$response = $this->login_model->get_login($email,$senha);
@@ -43,7 +44,7 @@
 			if(!empty($response['email']))
 			{
 				$login = array(
-				   'id'  => $response['id']
+				   'id'  => $response['id'] 
 				);
 				$this->session->set_userdata($login);
 				$response = 'valido';
