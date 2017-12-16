@@ -9,7 +9,14 @@
 	
 	-- PRONTO, AGORA É SÓ TESTAR! --
 	
+	para acessar a pagina de cadastro de lead
+	http://hostname/index.php/lead/create
+
+	para acessar a pagina de login
+	http://hostname/index.php/login
+
 	PARA FAZER LOGIN BASTA UTILIZAR A CREDENCIAL ABAIXO
 	
 	e-mail: teste@teste.com
 	senha: teste
+	
