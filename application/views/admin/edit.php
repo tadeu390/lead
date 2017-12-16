@@ -14,7 +14,7 @@
 									data-content='
 										<button class=\"btn btn-outline-danger btn-block\" onclick=\"Main.logout()\">Sair</button>
 									
-									'  style='font-size: 40px; color: #dc3545; cursor: pointer; padding: 10px; border: 1px solid #dc3545; border-radius: 35px;'>
+									'  style='font-size: 40px; color: #e4773f; cursor: pointer; padding: 10px; border: 1px solid #e4773f; border-radius: 35px;'>
 										 <span class='glyphicon glyphicon-user'></span></div>";
 							  ?>
 						</li>

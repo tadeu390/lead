@@ -49,7 +49,7 @@
 	<div class='row'id='container' name='container'>
 		<div class='col-lg-12' style='margin-bottom: 20px;'>
 			<div class='col-lg-8 offset-lg-2 text-center'>
-				<fieldset style='border: 1px solid #dc3545;'>
+				<fieldset style='border: 1px solid #e4773f;'>
 					<legend>Selecione o Período</legend>
 				<div class='row'>
 					<div class='col-lg-4'>

@@ -29,10 +29,10 @@
 	echo form_open('lead/store',$atr);
  ?>
 	<input type='hidden' value='<?= set_value('id') ? : (isset($id) ? $id : '') ?>' id='lead' name='lead'>
-	<div class='col-md-8  offset-md-2 col-lg-4 offset-lg-4 padding shadow-basic' style='background-color: white'>
+	<div class='col-md-8  offset-md-2 col-lg-4 offset-lg-4 padding' style='background-color: white'>
 		<div class='text-center' style='color: silver;'>
 					<br />
-					<img src="<?php echo $url; ?>/imagens/beeleads.png" />
+					<a href="http://www.beeleads.com.br/"><img src="<?php echo $url; ?>/imagens/beeleads.png"  title="Beeleads" /></a>
 				</div>
 				<br /><br />
 		<div class='form-group'>

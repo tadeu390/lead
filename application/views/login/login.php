@@ -29,10 +29,10 @@
       </div>
     </div>
   </div>
-</div>
-<div class='col-md-8  offset-md-2 col-lg-4 offset-lg-4 padding shadow-basic' style='margin: 10em auto; background-color: rgba(255,255,255,1);'>
+</div> 
+<div class='col-md-8  offset-md-2 col-lg-4 offset-lg-4 padding login'>
 	<div class='text-center' style='color: silver;'>
-		<img src="<?php echo $url; ?>/imagens/beeleads.png" />
+		<a href="http://www.beeleads.com.br/"><img src="<?php echo $url; ?>/imagens/beeleads.png" title="Beeleads" /></a>
 	</div>
 	<br /><br />
 	<div class='form-group'>
