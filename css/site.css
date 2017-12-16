@@ -4,11 +4,11 @@
 }
 
 .border-default{
-	border: 1px solid #dc3545;
+	border: 1px solid #e4773f;
 }
 
 body{
-	background-image: url('../imagens/fundo.jpg');
+	background-image: url('../imagens/fundo2.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;

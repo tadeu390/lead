@@ -19,7 +19,7 @@
 			<h2>Admin</h2>
 		</div>
 		<div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center">
-			<strong>A</strong><strong class="text-primary">D</strong></a>
+			<strong>A</strong><strong style='color: #e4773f;'>D</strong></a>
 		</div>
 	</div>
 	<div class="main-menu">

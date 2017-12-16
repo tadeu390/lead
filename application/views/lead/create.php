@@ -30,6 +30,11 @@
  ?>
 	<input type='hidden' value='<?= set_value('id') ? : (isset($id) ? $id : '') ?>' id='lead' name='lead'>
 	<div class='col-md-8  offset-md-2 col-lg-4 offset-lg-4 padding shadow-basic' style='background-color: white'>
+		<div class='text-center' style='color: silver;'>
+					<br />
+					<img src="<?php echo $url; ?>/imagens/beeleads.png" />
+				</div>
+				<br /><br />
 		<div class='form-group'>
 			<div class='input-group mb-2 mb-sm-0'>
 				<input type='text' class='form-control' placeholder='Nome' autofocus name='nome' id='nome' value='<?= set_value('nome') ? : (isset($nome) ? $nome : '') ?>'>

@@ -197,10 +197,10 @@ var Main = {
 					labels : response.dia,
 					datasets : [
 						{
-							fillColor : "rgba(255,255,255,0)",
-							strokeColor : "#dc3545",
+							fillColor : "#e4773f",
+							strokeColor : "#e4773f",
 							pointColor : "rgba(255,255,255,1)",
-							pointStrokeColor : "#dc35d45",
+							pointStrokeColor : "#e4773f",
 							data : response.qtd,
 							label : ''
 						}

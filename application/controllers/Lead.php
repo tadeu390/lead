@@ -51,7 +51,6 @@
 		{
 			$data['url'] = base_url();
 			$data['title'] = 'Lead - Cadastro';
-			$data['message'] = 'Informe seus dados no formulario abaixo';
 			$this->load->view('templates/header',$data);
 			$this->load->view('lead/create',$data);
 			$this->load->view('templates/footer',$data);

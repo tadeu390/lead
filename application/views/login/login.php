@@ -30,9 +30,9 @@
     </div>
   </div>
 </div>
-<div class='col-md-8  offset-md-2 col-lg-4 offset-lg-4 padding shadow-basic' style='background-color: rgba(255,255,255,1);'>
+<div class='col-md-8  offset-md-2 col-lg-4 offset-lg-4 padding shadow-basic' style='margin: 10em auto; background-color: rgba(255,255,255,1);'>
 	<div class='text-center' style='color: silver;'>
-		<h3>Login<br /><br /> Informe seus dados</h3>
+		<img src="<?php echo $url; ?>/imagens/beeleads.png" />
 	</div>
 	<br /><br />
 	<div class='form-group'>

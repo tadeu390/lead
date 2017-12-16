@@ -5,7 +5,7 @@
 				<div class="navbar-holder d-flex align-items-center justify-content-between">
 					<div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn">
 					<span class="glyphicon glyphicon-align-justify" style='line-height: 40px; transform: scale(2.5);'> </span></a>
-					
+						<img src="<?php echo $url?>imagens/beeleads.png" style='width: 60px;' />
 					</div>
 					<ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
 						<li class="nav-item">
@@ -14,7 +14,7 @@
 									data-content='
 										<button class=\"btn btn-outline-danger btn-block\" onclick=\"Main.logout()\">Sair</button>
 									
-									'  style='font-size: 40px; color: #dc3545; cursor: pointer; padding: 10px; border: 1px solid #dc3545; border-radius: 35px;'>
+									'  style='font-size: 40px; color: #e4773f; cursor: pointer; padding: 10px; border: 1px solid #e4773f; border-radius: 35px;'>
 										 <span class='glyphicon glyphicon-user'></span></div>";
 							  ?>
 						</li>
@@ -75,8 +75,8 @@
 									echo "<td>".$leads[$i]['telefone']."</td>";
 									echo "<td>".$leads[$i]['observacoes']."</td>";
 									echo "<td>";
-										echo "<a href='".$url."index.php/admin/edit/".$leads[$i]['id']."' title='Editar' style='color: #dc3545; cursor: pointer;' class='glyphicon glyphicon-edit'></a>  |  ";
-										echo "<span onclick='Main.trash_lead(". $leads[$i]['id'] .");' id='sp_lead_trash' name='sp_lead_trash' title='Apagar' style='color: #dc3545; cursor: pointer;' class='glyphicon glyphicon-trash'></span>";
+										echo "<a href='".$url."index.php/admin/edit/".$leads[$i]['id']."' title='Editar' style='color: #e4773f; cursor: pointer;' class='glyphicon glyphicon-edit'></a>  |  ";
+										echo "<span onclick='Main.trash_lead(". $leads[$i]['id'] .");' id='sp_lead_trash' name='sp_lead_trash' title='Apagar' style='color: #e4773f; cursor: pointer;' class='glyphicon glyphicon-trash'></span>";
 									echo "</td>";
 								echo "</tr>";
 							}

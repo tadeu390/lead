@@ -5,7 +5,7 @@
 				<div class="navbar-holder d-flex align-items-center justify-content-between">
 					<div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn">
 					<span class="glyphicon glyphicon-align-justify" style='line-height: 40px; transform: scale(2.5);'> </span></a>
-					
+						<img src="<?php echo $url?>imagens/beeleads.png" style='width: 60px;' />
 					</div>
 					<ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
 						<li class="nav-item">
