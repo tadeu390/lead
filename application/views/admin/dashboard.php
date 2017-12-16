@@ -1,52 +1,3 @@
-<?php
-	if(!isset($_SESSION['id_user']))
-		header("location:$url"."index.php/login/login");
-?>
-
-<nav class="side-navbar">
-	<div class="sidenav-header d-flex align-items-center justify-content-center">
-		<div class="sidenav-header-inner text-center"><img src="../../imagens/admin.png" alt="person" class="img-fluid rounded-circle">
-			<h2>Admin</h2>
-		</div>
-		<div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center">
-			<strong>A</strong><strong class="text-primary">D</strong></a>
-		</div>
-	</div>
-	<div class="main-menu">
-		<ul id="side-main-menu" class="side-menu list-unstyled">                  
-			<li class="active">
-				<a href="#" id="bt_leads" name="bt_leads"> <i class="icon-home"></i><span>Leads</span></a>
-			</li>
-			<li>
-				<a href="#" id="bt_estatisca" name="bt_estatisca"><i class="icon-form"></i><span>Estatísticas</span></a>
-			</li>
-			<!--<li> <a href="charts.html"><i class="icon-presentation"></i><span>Charts</span></a></li>
-			<li> <a href="tables.html"> <i class="icon-grid"> </i><span>Tables  </span></a></li>
-			<li> <a href="login.html"> <i class="icon-interface-windows"></i><span>Login page                        </span></a></li>
-			<li> <a href="#"> <i class="icon-mail"></i><span>Demo</span>
-			<div class="badge badge-warning">6 New</div></a></li>-->
-		</ul>
-	</div>
-	<!--
-	<div class="admin-menu">
-		<ul id="side-admin-menu" class="side-menu list-unstyled"> 
-		<li> <a href="#pages-nav-list" data-toggle="collapse" aria-expanded="false"><i class="icon-interface-windows"></i><span>Dropdown</span>
-			<div class="arrow pull-right"><i class="fa fa-angle-down"></i></div></a>
-			<ul id="pages-nav-list" class="collapse list-unstyled">
-				<li> <a href="#">Page 1</a></li>
-				<li> <a href="#">Page 2</a></li>
-				<li> <a href="#">Page 3</a></li>
-				<li> <a href="#">Page 4</a></li>
-			</ul>
-		</li>
-		<li> <a href="#"> <i class="icon-screen"> </i><span>Demo</span></a></li>
-		<li> <a href="#"> <i class="icon-flask"> </i><span>Demo</span>
-			<div class="badge badge-info">Special</div></a></li>
-		<li> <a href=""> <i class="icon-flask"> </i><span>Demo</span></a></li>
-		<li> <a href=""> <i class="icon-picture"> </i><span>Demo</span></a></li>
-		</ul>
-	</div>-->
-</nav>
 <div class='page home-page'>
 	<header class="header">
 		<nav class="navbar">
@@ -61,8 +12,6 @@
 							<?php
 								echo"<div data-toggle='popover' data-html='true' data-placement='left' title='<div class=\"text-center\">Opções da conta</div>' 
 									data-content='
-										
-									<a class=\"btn btn-outline-danger btn-block\" href=\"p_cadastro.php?usuario=".$_SESSION['id_user']."\"><span class=\"glyphicon glyphicon-cog\"></span> Configurações</a>
 										<button class=\"btn btn-outline-danger btn-block\" onclick=\"Main.logout()\">Sair</button>
 									
 									'  style='font-size: 40px; color: #dc3545; cursor: pointer; padding: 10px; border: 1px solid #dc3545; border-radius: 35px;'>
@@ -74,7 +23,67 @@
 			</div>
 		</nav>
 	</header>
-	<div class='row' style='padding: 30px;' id='container' name='container'>
-		dd
+	<div class="modal fade" id="admin_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			
+		  </div>
+		  <div class="modal-body text-center" id='mensagem'>
+			
+		  </div>
+		  <div class="modal-footer">
+			
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<div class='row' style='padding: 30px;'>
+		<p>Todos os Leads</p>
+	</div>
+	<div class='row' id='container' name='container'>
+		<?php
+			echo "<div class='col-lg-10 offset-lg-1'>";
+				echo "<div class='table-responsive'>";
+					echo "<table class='table table-striped table-hover'>";
+						echo "<thead>";
+							echo "<tr>";
+								echo "<td>Nome</td>";
+								echo "<td>Ativo</td>";
+								echo "<td>E-mail</td>";
+								echo "<td>CPF</td>";
+								echo "<td>CEP</td>";
+								echo "<td>Telefone</td>";
+								echo "<td>Observações</td>";
+								echo "<td>Ações</td>";
+							echo "<tr>";
+						echo "</thead>";
+						echo "<tbody>";
+							for($i = 0; $i < count($leads); $i++)
+							{
+								$ativo = "";
+								if($leads[$i]['ativo'] == 1)
+									$ativo = "Sim";
+								else
+									$ativo = "Não";
+								echo "<tr>";
+									echo "<td>".$leads[$i]['nome']."</td>";
+									echo "<td>".$ativo."</td>";
+									echo "<td>".$leads[$i]['email']."</td>";
+									echo "<td>".$leads[$i]['cpf']."</td>";
+									echo "<td>".$leads[$i]['cep']."</td>";
+									echo "<td>".$leads[$i]['telefone']."</td>";
+									echo "<td>".$leads[$i]['observacoes']."</td>";
+									echo "<td>";
+										echo "<a href='".$url."index.php/admin/edit/".$leads[$i]['id']."' title='Editar' style='color: #dc3545; cursor: pointer;' class='glyphicon glyphicon-edit'></a>  |  ";
+										echo "<span onclick='Main.trash_lead(". $leads[$i]['id'] .");' id='sp_lead_trash' name='sp_lead_trash' title='Apagar' style='color: #dc3545; cursor: pointer;' class='glyphicon glyphicon-trash'></span>";
+									echo "</td>";
+								echo "</tr>";
+							}
+						echo "</tbody>";
+					echo "</table>";
+				echo "</div>";
+			echo "</div>";
+		?>
 	</div>
 </div>

@@ -11,6 +11,7 @@ CREATE TABLE usuario(
 CREATE TABLE leads(
 	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	ativo BOOLEAN,
+	data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	nome VARCHAR(100) NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	cpf VARCHAR(14) NOT NULL,
@@ -19,6 +20,5 @@ CREATE TABLE leads(
 	observacoes TEXT
 );
 
---INSERIR UM USUÁRIO PADRÃO
-INSERT INTO usuario('nome','email','senha') VALUES('teste','teste@teste.com','teste');
+INSERT INTO usuario(nome,email,senha) VALUES('teste','teste@teste.com',sha2('teste',512));
 

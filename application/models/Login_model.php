@@ -8,8 +8,18 @@
 		
 		public function get_login($email = FALSE, $senha = FALSE)
 		{
-			$query = $this->db->query("SELECT email, id FROM 
-									usuario WHERE email = '$email' AND senha = '$senha'");
+			$dataResult = "";
+			$query = $this->db->query("SELECT id, senha FROM 
+								usuario WHERE email = ".$this->db->escape($email)." AND senha = sha2(".$this->db->escape($senha).",512)");
+			$data =  $query->row_array();
+			if(!empty($data))
+				$dataResult = hash("sha512",$data['id'].$data['senha']);
+			return $dataResult;
+		}
+		
+		public function session_is_valid($hash){
+			$query = $this->db->query("SELECT id FROM 
+										usuario WHERE sha2(concat(id,senha),512) = ".$this->db->escape($hash)."");
 			return $query->row_array();
 		}
 	}

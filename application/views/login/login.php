@@ -1,15 +1,35 @@
 <?php
-session_start();
-	echo $_SESSION['id_user'];
-	echo "<br />";
-	echo $_SESSION['nome'];
-
-	//if(isset($_SESSION['id_user']))
-		//header("location:$url"."index.php/admin/dashboard");
-	
 	$atr = array('id' => 'form_login','name' => 'form_login');
 	echo form_open('login/validar',$atr);
 ?>
+<div class="modal fade" id="login_modal_aguardar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body text-center">
+		Aguarde... validando seus dados.
+      </div>
+      <div class="modal-footer text-center" style='display: block;'>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="login_modal_erro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body text-center">
+		E-mail e/ou senha inválidos
+      </div>
+      <div class="modal-footer text-center" style='display: block;'>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class='col-md-8  offset-md-2 col-lg-4 offset-lg-4 padding shadow-basic' style='background-color: rgba(255,255,255,1);'>
 	<div class='text-center' style='color: silver;'>
 		<h3>Login<br /><br /> Informe seus dados</h3>

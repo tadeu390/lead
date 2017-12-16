@@ -1,10 +1,34 @@
+<div class="modal fade" id="lead_modal_aguardar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header"></div>
+			<div class="modal-body text-center">
+				Aguarde... Enviando seus dados
+			</div>
+			<div class="modal-footer text-center" style='display: block;'></div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="lead_modal_sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header"></div>
+			<div class="modal-body text-center">
+				Obrigado. Seus dados foram enviados com sucesso
+			</div>
+			<div class="modal-footer text-center" style='display: block;'>
+				<button type="button" class="btn btn-danger" onclick='location.reload();' data-dismiss="modal">Fechar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<br />
 <?php
 	$atr = array('id' => 'form_cadastro','name' => 'form_cadastro');
 	echo form_open('lead/store',$atr);
  ?>
-	<br />
 	<input type='hidden' value='<?= set_value('id') ? : (isset($id) ? $id : '') ?>' id='lead' name='lead'>
-	
 	<div class='col-md-8  offset-md-2 col-lg-4 offset-lg-4 padding shadow-basic' style='background-color: white'>
 		<div class='form-group'>
 			<div class='input-group mb-2 mb-sm-0'>
@@ -43,11 +67,6 @@
 			</div>
 			<div class='input-group mb-2 mb-sm-0 text-danger' id='error-observacoes'><?php echo form_error('observacoes') ?  : ''; ?></div>
 		</div>		
-		<?php
-			if(empty($nome))
-				echo"<input type='button' id='bt_cadastro' name='bt_cadastro' class='btn btn-danger btn-block' value='Cadastrar'>";
-			else
-				echo"<input type='button' id='bt_cadastro' name='bt_cadastro' class='btn btn-danger btn-block' value='Atualizar'>";
-		?>
+		<input type='button' id='bt_cadastro' name='bt_cadastro' class='btn btn-danger btn-block' value='Cadastrar'>
 	</div>
 </form>

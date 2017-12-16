@@ -1,5 +1,4 @@
 <?php
-	header('Access-Control-Allow-Origin: *');
 	class Lead extends CI_Controller {
 		/*
 			no construtor carregamos as bibliotecas necessárias e também nossa model
@@ -9,10 +8,12 @@
 			parent::__construct();
 			
 			$this->load->model('lead_model');
+			$this->load->model('login_model');
 			$this->load->helper('url_helper');
 			$this->load->helper('url');
 			$this->load->helper('html');
 			$this->load->helper('form');
+			$this->load->library('session');
 		}
 		
 		/*
@@ -31,7 +32,12 @@
 				'telefone' => $this->input->post('telefone'),
 				'observacoes' => $this->input->post('observacoes'),
 			);
-			$this->lead_model->set_lead($dataToSave);
+			
+			//bloquear acesso direto ao metodo store
+			if(!empty($dataToSave['email']))
+				$this->lead_model->set_lead($dataToSave);
+			else
+				redirect('lead/create');
 			
 			$arr = array('response' => 'sucesso');
 			header('Content-Type: application/json');
@@ -52,26 +58,48 @@
 		}
 		
 		/*
-			metodo responsavel por carregar os dados no formulario
-			de acordo com a id que é passada como parametro
+			FAZ A LISTAGEM DOS LEADS DESDE QUE EXISTA A SESSAO DE USUARIO E A MESMA
+			SEJA VALIDA
 		*/
-		public function edit($id = null)
-		{
-			$dataToForm = $this->lead_model->get_lead($id);
-			header('Content-Type: application/json');
-			echo json_encode($dataToForm);
-		}
-		
 		public function index()
 		{
-			$arr = $this->lead_model->get_lead();
-			header('Content-Type: application/json');
-			echo json_encode($arr);
+			if(!empty($this->login_model->session_is_valid($this->session->id)['id']))
+			{
+				$arr = $this->lead_model->get_lead();
+				header('Content-Type: application/json');
+				echo json_encode($arr);
+			}
+			else
+				redirect('lead/create');
 		}
 		
+		/*
+			APAGAR UM LEAD DESDE QUE EXISTA A SESSAO DE USUARIO E A MESMA
+			SEJA VALIDA
+		*/
 		public function delete($id = null)
 		{
-			$this->lead_model->delete_lead($id);
+			if(!empty($this->login_model->session_is_valid($this->session->id)['id']))
+				$this->lead_model->delete_lead($id);
+			else
+				redirect('lead/create');
+		}
+		
+		/*
+			CARREGA OS DADOS PARA O GRAFICO DESDE QUE EXISTA A SESSAO DE USUARIO E A MESMA
+			SEJA VALIDA
+		*/
+		public function estatistica($mes = null, $ano = null)
+		{
+			if(!empty($this->login_model->session_is_valid($this->session->id)['id']))
+			{
+				$result = $this->lead_model->get_lead_chart($mes,$ano);
+				//$arr = array('response' => $ultimo_dia);
+				header('Content-Type: application/json');
+				echo json_encode($result);
+			}
+			else
+				redirect('lead/create');
 		}
 	}
 ?>

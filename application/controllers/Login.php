@@ -1,5 +1,4 @@
 <?php
-	header('Access-Control-Allow-Origin: *');
 	class Login extends CI_Controller {
 		/*
 			no construtor carregamos as bibliotecas necessarias e tambem nossa model
@@ -27,13 +26,20 @@
 			$this->load->view('templates/header',$data);
 			$this->load->view('login/login',$data);
 			$this->load->view('templates/footer',$data);
+			if(!empty($this->login_model->session_is_valid($this->session->id)['id']))
+				redirect('admin/dashboard');
 		}
-		
+		/*
+			destroi a sessao de login
+		*/
 		public function logout()
 		{
 			unset($_SESSION['id']);
 		}
 		
+		/*
+			Valida os dados de login
+		*/
 		public function validar()
 		{ 
 			$email = $this->input->post('email');
@@ -41,10 +47,14 @@
 			$response = $this->login_model->get_login($email,$senha);
 			$data['message'] = 'Administração';
 			$data['title'] = 'Login';
-			if(!empty($response['email']))
+			
+			//se ja houver uma sessao apenas dar um refresh na pagina e nao criar a sessao novamente
+			if(!empty($this->login_model->session_is_valid($this->session->id)['id']))
+				$response = 'valido';
+			else if(!empty($response))
 			{
 				$login = array(
-				   'id'  => $response['id'] 
+				   'id'  => $response
 				);
 				$this->session->set_userdata($login);
 				$response = 'valido';
